@@ -16,6 +16,8 @@ DST = "/output/entry.png"
 def main():
     os.makedirs(os.path.dirname(DST), exist_ok=True)
     shutil.copyfile(SRC, DST)
+    if os.path.getsize(SRC) != os.path.getsize(DST):
+        raise RuntimeError("copy verification failed: size mismatch")
 
 
 if __name__ == "__main__":
